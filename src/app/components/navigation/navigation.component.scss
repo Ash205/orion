@@ -1,0 +1,59 @@
+@import "../../../styles";
+$radius: 20px;
+
+.nav-container {
+    width: 100%;
+    position: fixed;
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: $or-navbar-height;
+        border-radius: 0 0 $radius $radius;
+        background: var(--surface-one);
+        box-shadow: inset lighten(#000, 50%) 0 -5px;
+        .logo {
+            width: $or-spacing-3xl;
+            height: $or-spacing-3xl;
+            border-radius: 50%;
+            background: var(--on-primary);
+        }
+        .nav-links {
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            border-radius: 0 0 $radius $radius;
+            overflow: hidden;
+            .nav-link {
+                width: calc($or-spacing-3xl * 2);
+                height: 100%;
+                cursor: pointer;
+                color: var(--on-secondary);
+                background: var(--secondary);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: inset var(--secondary-variant) 0 -5px;
+                border-left: 0.5px solid var(--secondary-variant);
+                &:first-child {
+                    border-radius: 0 0 0 $radius;
+                }
+                &:last-child {
+                    border-radius: 0 0 $radius 0;
+                    // border: none;
+                }
+                &.router-link-active {
+                    background: var(--secondary-variant);
+                    color: var(--on-primary);
+                    font-weight: bold;
+                    box-shadow: inset var(--on-surface) 0 -5px;
+                }
+            }
+        }
+    }
+}
+
+.dummy {
+    height: $or-navbar-height;
+}

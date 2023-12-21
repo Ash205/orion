@@ -1,0 +1,3 @@
+@for (project of projects; track $index) {
+    <div class="nav-link" [routerLink]="[project.path]" routerLinkActive="router-link-active">{{ project.name }}</div> 
+}

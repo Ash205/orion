@@ -1,0 +1,12 @@
+@import "../../../styles";
+
+$radius: 30px;
+.container {
+    border-radius: 0 0 $radius $radius;
+    background: var(--surface-two);
+    width: 100%;
+    height: $or-body-height;
+    // padding-top: $or-navbar-height;
+    box-shadow: inset lighten(#000, 50%) 0 -5px;
+    box-sizing: border-box;
+}
