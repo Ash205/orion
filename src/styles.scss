@@ -60,4 +60,47 @@ body, html {
     font-family: 'JetBrains Mono', monospace;
     font-size: 24px;
     background: var(--surface-one);
+    background: black;
+}
+
+$radius: 30px;
+.background {
+    height: 100vh;
+    background: var(--surface-one);
+    .container {
+        box-sizing: border-box;
+        padding-top: $or-navbar-height;
+        background: var(--surface-two);
+        height: 100%;
+        border-radius: 0 0 $radius $radius;
+        box-shadow: inset lighten(#000, 50%) 0 -5px;
+    }
+}
+
+.btn-clicky {
+    width: 8vw;
+    height: 8vh;
+    border: none;
+    border-radius: 1.5vw;
+
+	background-color: var(--primary);
+    color: var(--on-primary);
+    box-shadow: 0.5vw 0.5vw gray;
+
+    font-family: 'GT-Maru', 'JetBrains Mono', monospace;
+    font-size: large;
+	text-decoration: none;
+
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-clicky:hover {
+    background-color: var(--primary-variant);
+}
+
+.btn-clicky:active {
+    background-color: var(--primary);
+    transform: translate(0.5vw, 0.5vw);
+    box-shadow: 0.1vw 0.1vw gray;
 }

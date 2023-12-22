@@ -14,10 +14,15 @@ $radius: 20px;
         background: var(--surface-one);
         box-shadow: inset lighten(#000, 50%) 0 -5px;
         .logo {
-            width: $or-spacing-3xl;
-            height: $or-spacing-3xl;
-            border-radius: 50%;
+            width: calc($or-spacing-3xl * 2);
+            height: 100%;
+            border-radius: 0 0 $radius $radius;
+            box-shadow: inset lighten(#000, 50%) 0 -5px;
             background: var(--on-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
         }
         .nav-links {
             height: 100%;
@@ -41,7 +46,6 @@ $radius: 20px;
                 }
                 &:last-child {
                     border-radius: 0 0 $radius 0;
-                    // border: none;
                 }
                 &.router-link-active {
                     background: var(--secondary-variant);
@@ -52,8 +56,4 @@ $radius: 20px;
             }
         }
     }
-}
-
-.dummy {
-    height: $or-navbar-height;
 }

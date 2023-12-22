@@ -1,5 +1,31 @@
-<div class="container">
-    <div class="start"></div>
-    <div class="game"></div>
-    <div class="end"></div>
+<div class="background">
+    <div class="container">
+        <div class="start">
+            <div class="title">MOVIE METER</div>
+            <div class="">Find which movie has higher rating</div>
+            <div class="modes">
+                <div class="mode active" id="mode1" (click)="changeMode('mode1')">5 ROUNDS</div>
+                <div class="mode" id="mode2" (click)="changeMode('mode2')">10 ROUNDS</div>
+                <div class="mode" id="mode3" (click)="changeMode('mode3')">SURVIVAL</div>
+            </div>
+            <div class="start-btn"><button class="btn-clicky" (click)="onStart()">Start</button></div>
+        </div>
+
+        <div class="game">
+            <div class="header">
+                <div class="round"></div>
+                <div class="score"></div>
+            </div>
+            <div class="body">
+                @for (movie of currentMovies; track $index) {
+                    <div class="movie">
+                        <div class="poster"><img src="{{movie.Poster_Image}}" alt=""></div>
+                        <div class="title">{{movie.Series_Title}}</div>
+                        <div class="rating"></div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="end"></div>
+    </div>
 </div>

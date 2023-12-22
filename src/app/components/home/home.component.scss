@@ -1,0 +1,24 @@
+@import ".../../../../../styles.scss";
+
+.container {
+    background: url("../../../assets/sky.jpg");
+    background: black;
+    background-repeat: no-repeat;
+    height: 100vh;
+    padding-top: $or-navbar-height;
+    box-sizing: border-box;
+    background-size: cover;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .earth {
+        animation: revolution 60s linear infinite;
+    }
+    .title {
+        color: white;
+        font-size: 200px;
+    }
+}
+@keyframes revolution {
+    100% {transform: rotate(360deg);}
+}
