@@ -5,12 +5,20 @@ $radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    .start {
+    overflow: hidden;
+    position: relative;
+    &--won {
+        background: green !important;
+    }
+    &--lost {
+        background: red !important;
+    }
+    .start, .end {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        width: 40%;
+        width: 45%;
         height: 75%;
         border-radius: $radius;
         background: var(--surface-one);
@@ -47,7 +55,60 @@ $radius: 30px;
 
     .game {
         display: none;
-        width: 75%;
+        width: 100%;
+        position: relative;
+        .header {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            .next {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+            .rounds {
+                position: absolute;
+                top: 0;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                border-radius: 0 $radius $radius 0;
+                .round {
+                    cursor: pointer;
+                    border-top: 0.5px solid var(--secondary-variant);
+                    width: $or-spacing-3xl;
+                    height: $or-spacing-3xl;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: var(--secondary-variant) 5px 0;
+                    background: var(--secondary);
+                    &:first-child {
+                        border: none;
+                        border-radius: 0 $radius 0 0;
+                    }
+                    &:last-child {
+                        border-radius: 0 0 $radius 0;
+                    }
+                    &.active {
+                        background: var(--secondary-variant);
+                        box-shadow: var(--on-surface) 5px 0;
+                        color: white;
+                        font-weight: bold;
+                    }
+                }
+            }
+            .score {
+                position: absolute;
+                top: 0;
+                margin-left: 50%;
+                transform: translateX(-50%);
+            }
+        }
         .body {
             display: flex;
             justify-content: space-around;
@@ -66,12 +127,74 @@ $radius: 30px;
                 .poster {
                     width: 300px;
                     height: 450px;
+                    overflow: hidden;
                 }
                 &:hover {
                     transform: translate(-5px, -5px);
                     box-shadow: lighten(#000, 50%) 5px 5px, inset lighten(#000, 50%) -5px -5px;
                 }
             }
+            .rating {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: $or-spacing-3xl;
+                height: $or-spacing-3xl;
+                background: var(--primary);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: $radius;
+            }
         }
     }
+
+    .end {
+        display: none;
+        z-index: 2;
+        min-width: fit-content;
+        &__score {
+            font-size: 32px;
+        }
+        .modes {
+            margin: 0 calc($or-spacing-3xl / 2);
+        }
+        .mode {
+            padding: 0;
+            width: calc($or-spacing-3xl / 2);
+            height: calc($or-spacing-3xl / 2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &--lost {
+                background: red;
+                box-shadow: inset darken(red, 20%) 0 -5px;
+            }
+        }
+        .play-again {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+
+    .end-background {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
+.neon {
+    box-shadow:
+    inset 0 0 50px #fff,      /* inner white */
+    inset 20px 0 80px #f0f,   /* inner left magenta short */
+    inset -20px 0 80px #0ff,  /* inner right cyan short */
+    inset 20px 0 300px #f0f,  /* inner left magenta broad */
+    inset -20px 0 300px #0ff, /* inner right cyan broad */
+    0 0 50px #fff,            /* outer white */
+    -10px 0 80px #f0f,        /* outer left magenta */
+    10px 0 80px #0ff;         /* outer right cyan */
 }

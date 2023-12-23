@@ -1,5 +1,13 @@
 <div class="background">
-    <div class="container">
+    <div class="container" [ngClass]="{'container--won': roundMetaData[currentRound-1].result==='won', 'container--lost': roundMetaData[currentRound-1].result==='lost'}">
+        <div class="end-background">
+            @for (round of currentMovies; track $index) {
+                @for (img of round; track $index) {
+                    <img src="{{img.Poster_Image}}" alt="">
+                }
+            }
+        </div>
+
         <div class="start">
             <div class="title">MOVIE METER</div>
             <div class="">Find which movie has higher rating</div>
@@ -13,19 +21,45 @@
 
         <div class="game">
             <div class="header">
-                <div class="round"></div>
-                <div class="score"></div>
+                @if (roundMetaData[currentRound-1].over) {
+                    <div class="next neon"><button class="btn-clicky" (click)="onNext()">{{currentRound>=rounds ? 'See Results' : 'Next Round'}}</button></div>
+                }
+                <div class="rounds">
+                    @for (round of roundMetaData; track $index) {
+                        <div class="round round--{{roundMetaData[currentRound-1].result}}" (click)="changeRound($index+1)" [ngClass]="{'active': currentRound===$index+1}">{{$index+1}}
+                        </div>
+                    }
+                </div>
+                <div class="score">Score: {{score}}</div>
             </div>
             <div class="body">
-                @for (movie of currentMovies; track $index) {
-                    <div class="movie">
+                @for (movie of currentMovies[this.currentRound-1]; track $index) {
+                    <div class="movie" (click)="onMovieSelect($index)">
                         <div class="poster"><img src="{{movie.Poster_Image}}" alt=""></div>
                         <div class="title">{{movie.Series_Title}}</div>
-                        <div class="rating"></div>
+                        @if (roundMetaData[currentRound-1].over) {
+                            <div class="rating">{{movie.IMDB_Rating}}</div>
+                        }
                     </div>
                 }
             </div>
         </div>
-        <div class="end"></div>
+        <div class="end">
+            <div class="title">MOVIE METER</div>
+            <div class="end__score">
+                Score: {{score}}
+            </div>
+            <div class="modes">
+                @for (round of roundMetaData; track $index) {
+                    <div class="mode" [ngClass]="{'mode--lost': round.result==='lost'}">
+                        {{$index+1}}
+                    </div>
+                }
+            </div>
+            <div class="play-again">
+                <button class="btn-clicky" (click)="playAgain()">Play Again</button>
+                <button class="btn-clicky" (click)="downloadAsImage()">Share</button>
+            </div>
+        </div>
     </div>
 </div>
